@@ -1,0 +1,18 @@
+Coprl::Presenters.define(:interval, namespace: :plugins) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :plugin_drawer
+  plugin :interval
+  page_title 'Interval'
+
+  interval 5000 do
+    snackbar 'Interval expired'
+  end
+
+  indented_grid do
+    subheading 'Interval'
+    text 'An interval will execute code after a delay in millisconds. It can be used to refresh a section or page.'
+    text 'It waits until one interval completes before issuing the delay for the next interval.'
+    attach :code, file: __FILE__
+  end
+end

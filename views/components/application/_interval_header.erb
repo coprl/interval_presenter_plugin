@@ -1,0 +1,25 @@
+<style>
+    html {
+        overflow-x: hidden;
+        margin-right: calc(-1 * (100vw - 100%));
+    }
+</style>
+<script>
+  function load() {
+      const intervalExpired = new CustomEvent('interval_expired');
+      let objs = document.getElementsByClassName('v-interval');
+
+      for (const obj of objs) {
+          const delay = obj.dataset.delay;
+          (function loop() {
+              setTimeout(() => {
+                  // Your logic here
+                  obj.dispatchEvent(intervalExpired);
+                  loop();
+              }, delay);
+          })();
+      }
+  }
+
+  window.onload = load;
+</script>
